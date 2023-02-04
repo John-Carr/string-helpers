@@ -1,6 +1,10 @@
+
+#ifndef __UTILS_HPP__
+#define __UTILS_HPP__
+
 #include <cstdint>
 
-int8_t hexToByte(char c)
+inline int8_t hexToByte(char c)
 {
     // Digits in string
     if( (c >= '0') && (c <= '9') )
@@ -23,3 +27,5 @@ int8_t hexToByte(char c)
         return -1;
     }
 }
+
+#endif

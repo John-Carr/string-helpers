@@ -1,3 +1,7 @@
+
+#ifndef __UUID_HPP__
+#define __UUID_HPP__
+
 #include <array>
 #include "utils.hpp"
 
@@ -53,3 +57,5 @@ constexpr UUID operator""_uuid(const char* text, size_t len)
     }
     return result;
 }
+
+#endif
