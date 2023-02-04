@@ -26,7 +26,7 @@ constexpr MAC operator""_mac(const char* text, size_t len)
     MAC result;
     size_t index = 0;
     size_t count = 0;
-    while(index < len)
+    while(index < len && count < 6)
     {
         // Skip over seperation characters
         if(text[index] == ':' || text[index] == '-' || text[index] == '.')
@@ -47,8 +47,9 @@ constexpr MAC operator""_mac(const char* text, size_t len)
     // Its len + 1 here because of the extra increment
     // We are checking if we parsed the whole string because if we didn't then
     // we would want to error out
-    if(count > 6)
+    if(index != len)
     {
+        std::cout << "index " << index << " len " << len << " count " << count << std::endl;
         throw std::invalid_argument("MAC String Too Long: >6 Octets");
     }
     return result;
