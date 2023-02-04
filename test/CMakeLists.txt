@@ -13,6 +13,7 @@ add_executable(
     uuid-test.cpp
     ipv4-test.cpp
     ipv6-test.cpp
+    mac-test.cpp
 )
 
 target_link_libraries(unit_tests
