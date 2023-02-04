@@ -18,12 +18,8 @@ constexpr IPV4 operator""_ipv4(const char* text, size_t len)
     IPV4 result;
     size_t index = 0;
     size_t count = 0;
-    while(index < len)
+    while(index < len && count < 4)
     {
-        if(count > 4)
-        {
-            throw std::invalid_argument("IPV4 String Too Long: >4 Octets");
-        }
         while(text[index] != '.' && index < len)
         {
             if(text[index] < '0' || text[index] > '9')
@@ -44,6 +40,12 @@ constexpr IPV4 operator""_ipv4(const char* text, size_t len)
         }
         index++;
         count++;
+    }
+    // Its len + 1 here because of the extra increment
+    if(index != (len + 1))
+    {
+        std::cout << "index " << index << " len " << len << " count " << count << std::endl;
+        throw std::invalid_argument("IPV4 String Too Long: >4 Octets");
     }
     return result;
 }
