@@ -31,7 +31,7 @@ constexpr IPV4 operator""_ipv4(const char* text, size_t len)
 
             if(tmp > 255)
             {
-                throw std::invalid_argument("Invalid IPV4 String");
+                throw std::invalid_argument("Invalid IPV4 String: Octet > 255");
             }
 
             result.mData[count] = tmp;
@@ -42,7 +42,7 @@ constexpr IPV4 operator""_ipv4(const char* text, size_t len)
     }
     if(count != 4)
     {
-        throw std::invalid_argument("IPV4 String Too Long");
+        throw std::invalid_argument("IPV4 String Too Long: >4 Octets");
     }
     return result;
 }

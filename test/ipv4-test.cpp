@@ -36,7 +36,7 @@ TEST(IPV4Tests, OctetTooLarge)
       catch( std::invalid_argument& e )
       {
           // and this tests that it has the correct message
-          EXPECT_STREQ( "Invalid IPV4 String", e.what() );
+          EXPECT_STREQ( "Invalid IPV4 String: Octet > 255", e.what() );
           throw;
       }
   }, std::invalid_argument);
@@ -52,7 +52,7 @@ TEST(IPV4Tests, OctetStringTooLong)
       catch( std::invalid_argument& e )
       {
           // and this tests that it has the correct message
-          EXPECT_STREQ( "IPV4 String Too Long", e.what() );
+          EXPECT_STREQ( "IPV4 String Too Long: >4 Octets", e.what() );
           throw;
       }
   }, std::invalid_argument);
