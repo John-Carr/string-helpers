@@ -40,5 +40,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: 'Test Log'
-        path: ./build/Testing/*.log
+        path: ./build/Testing/Temporary/LastTest.log
 
