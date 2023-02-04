@@ -41,3 +41,19 @@ TEST(IPV6Tests, ValidAddresses)
     ASSERT_EQ(test[index].mData, expect[index]) << "Failed at index: " << index;
   }
 }
+
+TEST(IPV6Tests, InvalidFormat)
+{
+    EXPECT_THROW({
+        try
+        {
+        static const IPV6 test = "::db8:3333:4444:5555:6666:7777:8888"_ipv6;
+        }
+        catch( std::invalid_argument& e )
+        {
+            // and this tests that it has the correct message
+            EXPECT_STREQ( "IPV6 String Too Long", e.what() );
+            throw;
+        }
+    }, std::invalid_argument);
+}

@@ -22,19 +22,22 @@ public:
 
 constexpr IPV6 operator""_ipv6(const char* text, size_t len)
 {
+    // TODO: This would probably be better served as a regular expression
     IPV6 result;
     size_t index = 0;
     size_t count = 0;
-    // All 0s
+    // All 0s (Ex. `::`)
     if(len < 3)
     {
-        std::cout << "All zeros exited early " << len << std::endl;
         return result;
     }
-    // First 6 segments are 0s
+    // If the length is >= 3 but the string starts with :: then the first 6
+    // segments are 0s
     if(text[0] == ':' && text[1] == ':')
     {
+        // Skip the :'s
         index += 2;
+        // Skip the first 6 segments
         count += 6;
     }
     // Parse 2 segments
@@ -48,11 +51,15 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len)
         index++;
         count++;
     }
-    // If we had the first 6 segments at 0 we exit here
-    if(count == 8)
+    // If the count is at 8 the first 6 segments were 0
+    // But we also need to check the index since a badly formatted string
+    if(count == 8 && index >= len)
     {
-        std::cout << " First 6 seg zeros exited early" << std::endl;
         return result;
+    }
+    else if(count == 8 && index < len)
+    {
+        throw std::invalid_argument("IPV6 String Too Long");
     }
     // Check if middle 4 segments are 0s
     // This could also be last 6 segments are 0 so we need to check if
