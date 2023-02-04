@@ -42,9 +42,10 @@ constexpr IPV4 operator""_ipv4(const char* text, size_t len)
         count++;
     }
     // Its len + 1 here because of the extra increment
+    // We are checking if we parsed the whole string because if we didn't then
+    // we would want to error out
     if(index != (len + 1))
     {
-        std::cout << "index " << index << " len " << len << " count " << count << std::endl;
         throw std::invalid_argument("IPV4 String Too Long: >4 Octets");
     }
     return result;
