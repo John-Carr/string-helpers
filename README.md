@@ -29,7 +29,7 @@ To build run `make`
 To clean run `make clean`  
 To run tests run `make run-test`  
 Test results are located under `build/Testing/Temporary/LastTest.log`  
-To generate code coverage report run `make compile-cov`  
+To generate code coverage report run `make gen-cov`  
 The html report of code coverage can be found under `build/code-cov/index.html`
 
 ## Contributing
