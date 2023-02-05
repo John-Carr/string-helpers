@@ -7,14 +7,46 @@
 
 class UUID
 {
-
-public:
+private:
     std::array<uint8_t, 16> mData = {0};
 
+public:
+    // Constructor
     UUID() = default;
+    [[nodiscard]] uint8_t operator[](size_t) const;
+    // Friends
+    [[nodiscard]] friend bool operator==(const UUID& L, const std::array<uint8_t, 16>& R) noexcept;
+    [[nodiscard]] friend bool operator==(const UUID& L, const UUID& R) noexcept;
+    [[nodiscard]] friend bool operator!=(const UUID& L, const UUID& R) noexcept;
+    [[nodiscard]] friend bool operator!=(const UUID& L, const std::array<uint8_t, 16>& R) noexcept;
     friend constexpr UUID operator""_uuid(const char* text, size_t len);
 
 };
+
+uint8_t UUID::operator[](const size_t index) const
+{
+    return mData[index];
+}
+
+bool operator==(const UUID& L, const std::array<uint8_t, 16>& R) noexcept
+{
+    return L.mData == R;
+}
+
+bool operator==(const UUID& L, const UUID& R) noexcept
+{
+    return L.mData == R.mData;
+}
+
+bool operator!=(const UUID& L, const UUID& R) noexcept
+{
+    return L.mData != R.mData;
+}
+
+bool operator!=(const UUID& L, const std::array<uint8_t, 16>& R) noexcept
+{
+    return L.mData != R;
+}
 
 constexpr UUID operator""_uuid(const char* text, size_t len)
 {
@@ -34,9 +66,7 @@ constexpr UUID operator""_uuid(const char* text, size_t len)
             continue;
         }
         int8_t upper = hexToByte(text[index++]);
-        // index++;
         int8_t lower = hexToByte(text[index++]);
-        // index++;
         // Check if it was an invalid character
         if( upper < 0 || lower < 0)
         {
