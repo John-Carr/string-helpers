@@ -38,6 +38,7 @@ jobs:
     - name: Generate Code Coverage
       working-directory: ${{github.workspace}}/build
       run: |
+        sudo apt install -y lcov
         lcov -c --directory . --output-file main_coverage.info
         genhtml main_coverage.info --output-directory code-cov
     
