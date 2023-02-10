@@ -46,7 +46,6 @@ constexpr IPV4 operator""_ipv4(const char* text, size_t len) {
             size_t tmp = (text[index] - '0') + (result.mData[count] * 10);
 
             if (tmp > 255) {
-                std::cout << "index " << index << " count " << count << std::endl;
                 throw std::invalid_argument("Invalid IPV4 String: Octet > 255");
             }
 
@@ -65,4 +64,4 @@ constexpr IPV4 operator""_ipv4(const char* text, size_t len) {
     return result;
 }
 
-#endif // INC_IPV4_HPP_
+#endif  // INC_IPV4_HPP_

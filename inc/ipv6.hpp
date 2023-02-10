@@ -60,7 +60,8 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
     // Parse 2 segments
     for (size_t i = 0; i < 2; i++) {
         while (text[index] != ':' && index < len) {
-            result.mData[count] = (result.mData[count] << 4) | hexToByte(text[index]);
+            result.mData[count] =
+                (result.mData[count] << 4) | hexToByte(text[index]);
             index++;
         }
         index++;
@@ -89,7 +90,8 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
     // Parse 2 segments
     for (size_t i = 0; i < 2; i++) {
         while(text[index] != ':' && index < len) {
-            result.mData[count] = (result.mData[count] << 4) | hexToByte(text[index]);
+            result.mData[count] =
+                (result.mData[count] << 4) | hexToByte(text[index]);
             index++;
         }
         index++;
@@ -102,7 +104,8 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
     // Parse 4 segments
     for (size_t i = 0; i < 4; i++) {
         while(text[index] != ':' && index < len) {
-            result.mData[count] = (result.mData[count] << 4) | hexToByte(text[index]);
+            result.mData[count] =
+                (result.mData[count] << 4) | hexToByte(text[index]);
             index++;
         }
         index++;
