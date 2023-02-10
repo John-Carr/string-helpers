@@ -41,7 +41,8 @@ class IPV6 {
 };
 
 constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
-    // TODO(John Carr): This would probably be better served as a regular expression
+    // TODO(John Carr): This would probably be better served as a regular
+    // expression
     IPV6 result;
     size_t index = 0;
     size_t count = 0;

@@ -24,7 +24,7 @@
 #define INC_MAC_HPP_
 
 #include <array>
-#include "utils.hpp"
+#include <utils.hpp>
 
 class MAC {
  public:

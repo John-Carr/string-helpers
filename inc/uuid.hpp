@@ -24,7 +24,7 @@
 #define INC_UUID_HPP_
 
 #include <array>
-#include "utils.hpp"
+#include <utils.hpp>
 
 class UUID {
  private:
@@ -44,7 +44,6 @@ class UUID {
     [[nodiscard]] friend bool operator!=(const UUID& L,
                                     const std::array<uint8_t, 16>& R) noexcept;
     friend constexpr UUID operator""_uuid(const char* text, size_t len);
-
 };
 
 uint8_t UUID::operator[](const size_t index) const {
@@ -84,7 +83,7 @@ constexpr UUID operator""_uuid(const char* text, size_t len) {
         int8_t upper = hexToByte(text[index++]);
         int8_t lower = hexToByte(text[index++]);
         // Check if it was an invalid character
-        if ( upper < 0 || lower < 0) {
+        if (upper < 0 || lower < 0) {
             throw std::invalid_argument("Invalid UUID String");
         } else {
             result.mData[count/2] =
