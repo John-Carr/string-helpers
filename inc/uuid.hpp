@@ -71,16 +71,16 @@ constexpr UUID operator""_uuid(const char* text, size_t len) {
     // Index for the  parsed UUID
     size_t count = 0;
     // Loop through the input
-    while(index < len) {
+    while (index < len) {
         // Skip over seperation chars
-        if(text[index] == '-') {
+        if (text[index] == '-') {
             index++;
             continue;
         }
         int8_t upper = hexToByte(text[index++]);
         int8_t lower = hexToByte(text[index++]);
         // Check if it was an invalid character
-        if( upper < 0 || lower < 0) {
+        if ( upper < 0 || lower < 0) {
             throw std::invalid_argument("Invalid UUID String");
         }
         else {
@@ -91,7 +91,7 @@ constexpr UUID operator""_uuid(const char* text, size_t len) {
     }
     // UUID are represented as 32 hexadecimal (base-16) digits so error if
     // we parsed not that number
-    if(count != 32) {
+    if (count != 32) {
         throw std::invalid_argument("Invalid UUID String");
     }
     return result;

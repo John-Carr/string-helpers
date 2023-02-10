@@ -45,15 +45,15 @@ constexpr MAC operator""_mac(const char* text, size_t len) {
     MAC result;
     size_t index = 0;
     size_t count = 0;
-    while(index < len && count < 6) {
+    while (index < len && count < 6) {
         // Skip over seperation characters
-        if(text[index] == ':' || text[index] == '-' || text[index] == '.') {
+        if (text[index] == ':' || text[index] == '-' || text[index] == '.') {
             index++;
         }
         // Parse in increments of 2 chars
         int8_t upper = hexToByte(text[index++]);
         int8_t lower = hexToByte(text[index]);
-        if(upper < 0 || lower < 0) {
+        if (upper < 0 || lower < 0) {
             throw std::invalid_argument("Invalid Character in MAC string");
         }
         result.mData[count] =
@@ -64,7 +64,7 @@ constexpr MAC operator""_mac(const char* text, size_t len) {
     // Its len + 1 here because of the extra increment
     // We are checking if we parsed the whole string because if we didn't then
     // we would want to error out
-    if(index != len) {
+    if (index != len) {
         throw std::invalid_argument("MAC String Too Long: >6 Octets");
     }
     return result;

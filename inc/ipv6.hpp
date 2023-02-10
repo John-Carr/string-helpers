@@ -46,20 +46,20 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
     size_t index = 0;
     size_t count = 0;
     // All 0s (Ex. `::`)
-    if(len < 3) {
+    if (len < 3) {
         return result;
     }
     // If the length is >= 3 but the string starts with :: then the first 6
     // segments are 0s
-    if(text[0] == ':' && text[1] == ':') {
+    if (text[0] == ':' && text[1] == ':') {
         // Skip the :'s
         index += 2;
         // Skip the first 6 segments
         count += 6;
     }
     // Parse 2 segments
-    for(size_t i = 0; i < 2; i++) {
-        while(text[index] != ':' && index < len) {
+    for (size_t i = 0; i < 2; i++) {
+        while (text[index] != ':' && index < len) {
             result.mData[count] = (result.mData[count] << 4) | hexToByte(text[index]);
             index++;
         }
@@ -68,26 +68,26 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
     }
     // If the count is at 8 the first 6 segments were 0
     // But we also need to check the index since a badly formatted string
-    if(count == 8 && index >= len) {
+    if (count == 8 && index >= len) {
         return result;
     }
-    else if(count == 8 && index < len) {
+    else if (count == 8 && index < len) {
         throw std::invalid_argument("IPV6 String Too Long");
     }
     // Check if middle 4 segments are 0s
     // This could also be last 6 segments are 0 so we need to check if
     // index < len
-    if(text[index] == ':' && text[index + 1] == ':') {
+    if (text[index] == ':' && text[index + 1] == ':') {
         index += 2;
         count += 4;
     }
     // Check if it was last 6 segments
-    if(index >= len) {
+    if (index >= len) {
         std::cout << "Exited early last 6 seg are zeros" << std::endl;
         return result;
     }
     // Parse 2 segments
-    for(size_t i = 0; i < 2; i++) {
+    for (size_t i = 0; i < 2; i++) {
         while(text[index] != ':' && index < len) {
             result.mData[count] = (result.mData[count] << 4) | hexToByte(text[index]);
             index++;
@@ -96,11 +96,11 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
         count++;
     }
     // If we had the middle 4 segments at 0 we exit here
-    if(count == 8) {
+    if (count == 8) {
         return result;
     }
     // Parse 4 segments
-    for(size_t i = 0; i < 4; i++) {
+    for (size_t i = 0; i < 4; i++) {
         while(text[index] != ':' && index < len) {
             result.mData[count] = (result.mData[count] << 4) | hexToByte(text[index]);
             index++;
@@ -109,7 +109,7 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
         count++;
     }
 
-    if(count != 8) {
+    if (count != 8) {
         throw std::invalid_argument("IPV6 String Too Long");
     }
     return result;
