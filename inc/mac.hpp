@@ -33,12 +33,12 @@ class MAC {
     MAC() = default;
     friend constexpr MAC operator""_mac(const char* text, size_t len);
     static constexpr uint8_t numOctets = 6;
-    // TODO (John Carr): NIC
-    // TODO (John Carr): OUI
-    // TODO (John Carr): isUniCast
-    // TODO (John Carr): isMultiCast
-    // TODO (John Carr): isLocallyAdmin
-    // TODO (John Carr): isGloballyUnique
+    // TODO(John Carr): NIC
+    // TODO(John Carr): OUI
+    // TODO(John Carr): isUniCast
+    // TODO(John Carr): isMultiCast
+    // TODO(John Carr): isLocallyAdmin
+    // TODO(John Carr): isGloballyUnique
 };
 
 constexpr MAC operator""_mac(const char* text, size_t len) {
