@@ -33,5 +33,5 @@ To generate code coverage report run `make gen-cov`
 The html report of code coverage can be found under `build/code-cov/index.html`
 
 ## Contributing
-**TODO**
+**TODO (John Carr):**
 
