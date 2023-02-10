@@ -35,10 +35,14 @@ class UUID {
     UUID() = default;
     [[nodiscard]] uint8_t operator[](size_t) const;
     // Friends
-    [[nodiscard]] friend bool operator==(const UUID& L, const std::array<uint8_t, 16>& R) noexcept;
-    [[nodiscard]] friend bool operator==(const UUID& L, const UUID& R) noexcept;
-    [[nodiscard]] friend bool operator!=(const UUID& L, const UUID& R) noexcept;
-    [[nodiscard]] friend bool operator!=(const UUID& L, const std::array<uint8_t, 16>& R) noexcept;
+    [[nodiscard]] friend bool operator==(const UUID& L,
+                                    const std::array<uint8_t, 16>& R) noexcept;
+    [[nodiscard]] friend bool operator==(const UUID& L,
+                                    const UUID& R) noexcept;
+    [[nodiscard]] friend bool operator!=(const UUID& L,
+                                    const UUID& R) noexcept;
+    [[nodiscard]] friend bool operator!=(const UUID& L,
+                                    const std::array<uint8_t, 16>& R) noexcept;
     friend constexpr UUID operator""_uuid(const char* text, size_t len);
 
 };
@@ -84,7 +88,8 @@ constexpr UUID operator""_uuid(const char* text, size_t len) {
             throw std::invalid_argument("Invalid UUID String");
         } else {
             result.mData[count/2] =
-                (static_cast<uint8_t>(upper) << 4) | static_cast<uint8_t>(lower);
+                (static_cast<uint8_t>(upper) << 4) |
+                static_cast<uint8_t>(lower);
             count += 2;
         }
     }
