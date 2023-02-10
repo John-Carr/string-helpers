@@ -97,4 +97,4 @@ constexpr UUID operator""_uuid(const char* text, size_t len) {
     return result;
 }
 
-#endif // INC_UUID_HPP_
+#endif  // INC_UUID_HPP_

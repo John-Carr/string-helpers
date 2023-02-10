@@ -118,4 +118,4 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
     return result;
 }
 
-#endif // INC_IPV6_HPP_
+#endif  // INC_IPV6_HPP_

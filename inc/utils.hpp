@@ -44,4 +44,4 @@ inline int8_t hexToByte(char c) {
     }
 }
 
-#endif // INC_UTILS_HPP_
+#endif  // INC_UTILS_HPP_

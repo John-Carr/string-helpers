@@ -70,4 +70,4 @@ constexpr MAC operator""_mac(const char* text, size_t len) {
     return result;
 }
 
-#endif // INC_MAC_HPP_
+#endif  // INC_MAC_HPP_
