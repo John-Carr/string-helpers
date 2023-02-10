@@ -71,8 +71,7 @@ constexpr IPV6 operator""_ipv6(const char* text, size_t len) {
     // But we also need to check the index since a badly formatted string
     if (count == 8 && index >= len) {
         return result;
-    }
-    else if (count == 8 && index < len) {
+    } else if (count == 8 && index < len) {
         throw std::invalid_argument("IPV6 String Too Long");
     }
     // Check if middle 4 segments are 0s

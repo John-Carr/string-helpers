@@ -82,8 +82,7 @@ constexpr UUID operator""_uuid(const char* text, size_t len) {
         // Check if it was an invalid character
         if ( upper < 0 || lower < 0) {
             throw std::invalid_argument("Invalid UUID String");
-        }
-        else {
+        } else {
             result.mData[count/2] =
                 (static_cast<uint8_t>(upper) << 4) | static_cast<uint8_t>(lower);
             count += 2;

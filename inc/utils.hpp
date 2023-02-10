@@ -26,20 +26,17 @@
 #include <cstdint>
 
 inline int8_t hexToByte(char c) {
-    // Digits in string
     if ( (c >= '0') && (c <= '9') ) {
+        // Digits in string
         return (c - '0');
-    }
-    // Lowercase in string
-    else if ( (c >= 'a') && (c <= 'f') ) {
+    } else if ( (c >= 'a') && (c <= 'f') ) {
+        // Lowercase in string
         return (c - 'a' + 10);
-    }
-    // Uppercase in string
-    else if ( (c >= 'A') && (c <= 'F') ) {
+    } else if ( (c >= 'A') && (c <= 'F') ) {
+        // Uppercase in string
         return (c - 'A' + 10);
-    }
-    // Non hex character
-    else {
+    } else {
+        // Non hex character
         return -1;
     }
 }
