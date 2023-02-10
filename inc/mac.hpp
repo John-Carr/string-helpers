@@ -27,7 +27,7 @@
 #include "utils.hpp"
 
 class MAC {
-public:
+ public:
     std::array<uint8_t, 6> mData = {0};
 
     MAC() = default;

@@ -27,10 +27,10 @@
 #include "utils.hpp"
 
 class UUID {
-private:
+ private:
     std::array<uint8_t, 16> mData = {0};
 
-public:
+ public:
     // Constructor
     UUID() = default;
     [[nodiscard]] uint8_t operator[](size_t) const;

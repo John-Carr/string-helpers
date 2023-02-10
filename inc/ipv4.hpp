@@ -26,7 +26,7 @@
 #include <array>
 
 class IPV4 {
-public:
+ public:
     std::array<uint8_t, 4> mData = {0};
 
     IPV4() = default;

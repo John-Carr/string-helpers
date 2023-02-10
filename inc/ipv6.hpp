@@ -33,7 +33,7 @@
 // GUI for segments that are zero, or those that have leading zeros.
 
 class IPV6 {
-public:
+ public:
     std::array<uint32_t, 8> mData = {0};
 
     IPV6() = default;
